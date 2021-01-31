@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class EmpEntityTest {
     @Test
-    @DisplayName("email 빈값이 들어갔을 경우, 오류발생")
+    @DisplayName("email 빈값으로 생성할 경우, 오류발생")
     void test01() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             EmpEntity empEntity = EmpEntity.builder()
@@ -18,7 +18,7 @@ class EmpEntityTest {
     }
 
     @Test
-    @DisplayName("email null 이 들어갔을 경우, 오류발생")
+    @DisplayName("email null값으로 생성할 경우, 오류발생")
     void test02() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             EmpEntity empEntity = EmpEntity.builder()
