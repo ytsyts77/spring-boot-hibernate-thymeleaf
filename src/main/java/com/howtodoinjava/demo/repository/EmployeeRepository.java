@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.howtodoinjava.demo.model.EmployeeEntity;
 
 @Repository
-public interface EmployeeRepository 
-			extends CrudRepository<EmployeeEntity, Long> {
-
+public interface EmployeeRepository
+        extends CrudRepository<EmployeeEntity, Long> {
 }
