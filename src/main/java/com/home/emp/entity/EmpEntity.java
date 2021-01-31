@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "EMP")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EmpEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +34,8 @@ public class EmpEntity {
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "update_at", updatable = false)
-    private LocalDateTime updateAt;
+    @Column(name = "modified_at", updatable = false)
+    private LocalDateTime modifiedAt;
 
     @Builder
     public EmpEntity(String firstName, String lastName, String email) {
