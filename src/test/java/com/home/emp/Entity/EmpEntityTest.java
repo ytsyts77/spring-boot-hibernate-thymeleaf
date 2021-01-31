@@ -12,7 +12,7 @@ class EmpEntityTest {
     String email = "test@email.com";
 
     @Test
-    @DisplayName("모든값 세팅하고 객체 생성 ")
+    @DisplayName("모든값 세팅하고 객체 생성")
     void test03() {
         //when
         EmpEntity empEntity = EmpEntity.builder()
