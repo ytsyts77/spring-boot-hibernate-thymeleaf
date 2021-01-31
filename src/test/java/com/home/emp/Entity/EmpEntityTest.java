@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmpEntityTest {
     String firstName = "길동";
@@ -12,7 +12,7 @@ class EmpEntityTest {
     String email = "test@email.com";
 
     @Test
-    @DisplayName("모든값 세팅하고 객체 생성")
+    @DisplayName("모든값 세팅하고 객체 생성test")
     void test03() {
         //when
         EmpEntity empEntity = EmpEntity.builder()
