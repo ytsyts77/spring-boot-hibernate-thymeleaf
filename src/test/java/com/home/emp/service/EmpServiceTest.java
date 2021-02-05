@@ -15,14 +15,14 @@ class EmpServiceTest {
     @DisplayName("사원 등록")
     void add() {
         //given
-        EmpDto empDto = EmpDto.builder()
+        EmpDto emp = EmpDto.builder()
                 .firstName("길동")
                 .lastName("홍")
                 .email("test@email.com")
                 .build();
 
         //when
-        empService.add(empDto);
+        empService.add(emp);
 
         //then
         System.out.println(empService.get(1L));

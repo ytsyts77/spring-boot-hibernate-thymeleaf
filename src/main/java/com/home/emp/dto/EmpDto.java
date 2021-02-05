@@ -1,6 +1,6 @@
 package com.home.emp.dto;
 
-import com.home.emp.entity.EmpEntity;
+import com.home.emp.entity.Emp;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -20,7 +20,7 @@ public class EmpDto {
         this.email = email;
     }
 
-    public static EmpDto fromEntity(EmpEntity entity) {
+    public static EmpDto fromEntity(Emp entity) {
         EmpDto dto = EmpDto.builder()
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
@@ -30,8 +30,8 @@ public class EmpDto {
         return dto;
     }
 
-    public EmpEntity toEntity() {
-        return EmpEntity.builder()
+    public Emp toEntity() {
+        return Emp.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)

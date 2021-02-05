@@ -1,5 +1,6 @@
 package com.home.emp.entity;
 
+import com.home.global.message.UserMessage;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,11 +12,13 @@ import org.springframework.util.Assert;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static com.home.global.message.UserMessage.IS_REQUIRED;
+
 @Entity
-@Table(name = "EMP")
+@Table(name = "emp")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class EmpEntity {
+public class Emp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,8 +41,8 @@ public class EmpEntity {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public EmpEntity(String firstName, String lastName, String email) {
-        Assert.hasText(email, "이메일은 반드시 입력되야 합니다.");
+    public Emp(String firstName, String lastName, String email) {
+        Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일"));
 
         this.firstName = firstName;
         this.lastName = lastName;
