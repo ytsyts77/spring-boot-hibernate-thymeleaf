@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EmpTest {
     String firstName = "길동";
@@ -30,35 +31,44 @@ class EmpTest {
     @Test
     @DisplayName("email 세팅안하고 객체 생성")
     void test022() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Emp.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .build();
-        });
+        //given
+        Emp.EmpBuilder empBuilder = Emp.builder()
+                .firstName(firstName)
+                .lastName(lastName);
+
+        //expect
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, empBuilder::build);
+
+        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
     }
 
     @Test
     @DisplayName("email 빈값으로 객체 생성")
     void test02() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Emp.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .email("")
-                    .build();
-        });
+        //given
+        Emp.EmpBuilder empBuilder = Emp.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email("");
+
+        //expect
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, empBuilder::build);
+
+        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
     }
 
     @Test
     @DisplayName("email null값으로 객체 생성")
     void test01() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Emp.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .email(null)
-                    .build();
-        });
+        //given
+        Emp.EmpBuilder empBuilder = Emp.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(null);
+
+        //expect
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, empBuilder::build);
+
+        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
     }
 }

@@ -3,6 +3,7 @@ package com.home.global.message;
 import org.junit.jupiter.api.Test;
 
 import static com.home.global.message.UserMessage.IS_NOT_FOUND;
+import static com.home.global.message.UserMessage.IS_REQUIRED;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserMessageTest {
@@ -20,5 +21,12 @@ class UserMessageTest {
 
     @Test
     void isRequired() {
+        //given
+
+        //when
+        String message = UserMessage.get(IS_REQUIRED, "이메일");
+
+        //then
+        assertEquals("이메일 (은/는) 필수 입력값 입니다.", message);
     }
 }
