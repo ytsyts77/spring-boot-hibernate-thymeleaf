@@ -6,6 +6,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "dept")
@@ -19,6 +21,9 @@ public class Dept {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    @OneToMany(mappedBy = "dept")
+    private List<Emp> empList = new ArrayList<>();
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)

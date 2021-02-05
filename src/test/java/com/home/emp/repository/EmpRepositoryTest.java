@@ -44,6 +44,7 @@ class EmpRepositoryTest {
                 .dept(dept)
                 .build();
 
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //when
@@ -69,6 +70,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then

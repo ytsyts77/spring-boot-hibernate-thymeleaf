@@ -30,7 +30,7 @@ public class Emp {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "dept_id")
     private Dept dept;
 
