@@ -1,6 +1,7 @@
 package com.home.emp.repository;
 
 import com.home.emp.entity.Emp;
+import com.home.emp.entity.QDept;
 import com.home.emp.entity.QEmp;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +16,11 @@ public class EmpRepositorySupport {
 
     public List<Emp> findByEmail(String email) {
         QEmp e = QEmp.emp;
+        QDept d = QDept.dept;
 
         return query.selectFrom(e)
-                .where(e.email.eq(email))
+                .innerJoin(e.dept, d)
+                .where(e.email.contains(email))
                 .fetch();
     }
 }

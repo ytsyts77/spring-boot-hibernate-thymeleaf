@@ -38,7 +38,7 @@ class EmpRepositorySupportTest {
         empRepository.save(emp);
 
         //when
-        List<Emp> resultList = empRepositorySupport.findByEmail("test@email.com");
+        List<Emp> resultList = empRepositorySupport.findByEmail("test");
 
         //then
         assertEquals(1, resultList.size());
