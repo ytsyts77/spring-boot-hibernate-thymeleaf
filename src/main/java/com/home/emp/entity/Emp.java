@@ -45,6 +45,7 @@ public class Emp {
     @Builder
     public Emp(String firstName, String lastName, String email, Dept dept) {
         Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일"));
+        Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
 
         this.firstName = firstName;
         this.lastName = lastName;

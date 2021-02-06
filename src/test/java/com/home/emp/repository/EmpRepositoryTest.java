@@ -71,16 +71,14 @@ class EmpRepositoryTest {
                 .dept(dept)
                 .build();
 
+        //when
         deptRepository.save(dept);
         empRepository.save(emp);
 
+        //then
         assertEquals(1, empRepository.findAll().size());
         assertEquals(1, deptRepository.findAll().size());
-
-        //when
-
-        //then
-        assertEquals(0, dept.getEmpList().size());
+        assertEquals(1, dept.getEmpList().size());
     }
 
     @Test
@@ -168,17 +166,41 @@ class EmpRepositoryTest {
     @Test
     void test01() {
         //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
         Emp emp = Emp.builder()
                 .firstName("길동")
                 .lastName("홍")
                 .email("test@email.com")
+                .dept(dept)
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
         assertEquals(1, empRepository.findAll().size());
-        assertEquals(0, deptRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
     }
+
+//    @Test
+//    void test00() {
+//        //given
+//        Dept dept = Dept.builder()
+//                .name("테스트 부서")
+//                .build();
+//
+//        Emp emp = Emp.builder()
+//                .firstName("길동")
+//                .lastName("홍")
+//                .email("test@email.com")
+//                .dept(dept)
+//                .build();
+//
+//        //expect
+//        assertThrows(InvalidDataAccessApiUsageException.class, () -> empRepository.save(emp));
+//    }
 }
