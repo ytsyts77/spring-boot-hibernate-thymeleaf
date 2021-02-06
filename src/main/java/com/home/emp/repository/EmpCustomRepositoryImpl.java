@@ -5,16 +5,15 @@ import com.home.emp.entity.QDept;
 import com.home.emp.entity.QEmp;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@Repository
-public class EmpRepositorySupport {
+public class EmpCustomRepositoryImpl implements EmpCustomRepository {
     private final JPAQueryFactory query;
 
-    public List<Emp> findByEmail(String email) {
+    @Override
+    public List<Emp> findContainsEmail(String email) {
         QEmp e = QEmp.emp;
         QDept d = QDept.dept;
 

@@ -9,12 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class EmpRepositorySupportTest {
-    @Autowired
-    EmpRepositorySupport empRepositorySupport;
+class EmpCustomRepositoryTest {
     @Autowired
     EmpRepository empRepository;
     @Autowired
@@ -38,7 +35,7 @@ class EmpRepositorySupportTest {
         empRepository.save(emp);
 
         //when
-        List<Emp> resultList = empRepositorySupport.findByEmail("test");
+        List<Emp> resultList = empRepository.findContainsEmail("test");
 
         //then
         assertEquals(1, resultList.size());
