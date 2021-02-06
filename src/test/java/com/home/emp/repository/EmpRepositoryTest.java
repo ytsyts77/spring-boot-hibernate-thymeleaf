@@ -53,7 +53,7 @@ class EmpRepositoryTest {
         assertEquals(1, empRepository.findAll().size());
         assertEquals(1, deptRepository.findAll().size());
 
-        assertEquals(dept, deptRepository.findById(dept.getId()).get(););
+        assertEquals(dept, deptRepository.findById(dept.getId()).get());
         assertEquals(1, dept.getEmpList().size());
     }
 
