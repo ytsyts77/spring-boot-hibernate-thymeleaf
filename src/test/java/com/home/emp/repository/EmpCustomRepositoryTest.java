@@ -33,7 +33,7 @@ class EmpCustomRepositoryTest {
 
         deptRepository.save(dept);
         empRepository.save(emp);
-
+        
         //when
         List<Emp> resultList = empRepository.findContainsEmail("test");
 
