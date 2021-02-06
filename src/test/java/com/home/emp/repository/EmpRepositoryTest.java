@@ -19,7 +19,7 @@ class EmpRepositoryTest {
     DeptRepository deptRepository;
 
     @AfterEach
-    void printAll(){
+    void printAll() {
         List<Emp> empList = empRepository.findAll();
         List<Dept> deptList = deptRepository.findAll();
 
@@ -31,7 +31,34 @@ class EmpRepositoryTest {
     }
 
     @Test
-    void test03(){
+    void test06() {
+        //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
+        Emp emp = Emp.builder()
+                .firstName("길동")
+                .lastName("홍")
+                .email("test@email.com")
+                .dept(dept)
+                .build();
+
+        //when
+        deptRepository.save(dept);
+        empRepository.save(emp);
+
+
+        //then
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
+
+        assertEquals(dept, deptRepository.findById(dept.getId()).get(););
+        assertEquals(1, dept.getEmpList().size());
+    }
+
+    @Test
+    void test05() {
         //given
         Dept dept = Dept.builder()
                 .name("테스트 부서")
@@ -46,17 +73,77 @@ class EmpRepositoryTest {
 
         deptRepository.save(dept);
         empRepository.save(emp);
+
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
+
+        //when
+
+        //then
+        assertEquals(0, dept.getEmpList().size());
+    }
+
+    @Test
+    void test04() {
+        //given
+        Dept dept1 = Dept.builder()
+                .name("테스트 부서1")
+                .build();
+
+        Dept dept2 = Dept.builder()
+                .name("테스트 부서2")
+                .build();
+
+        Emp emp = Emp.builder()
+                .firstName("길동")
+                .lastName("홍")
+                .email("test@email.com")
+                .dept(dept1)
+                .build();
+
+        deptRepository.save(dept1);
+        deptRepository.save(dept2);
+        empRepository.save(emp);
+
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(2, deptRepository.findAll().size());
+
+        //when
+        emp.updateDept(dept2);
+
+        //then
+        assertEquals(dept2, empRepository.findById(emp.getId()).get().getDept());
+    }
+
+    @Test
+    void test03() {
+        //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
+        Emp emp = Emp.builder()
+                .firstName("길동")
+                .lastName("홍")
+                .email("test@email.com")
+                .dept(dept)
+                .build();
+
+        deptRepository.save(dept);
+        empRepository.save(emp);
+
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
 
         //when
         emp.updateDept(dept);
 
         //then
-        List<Emp> empList = empRepository.findAll();
-        assertEquals(1, empList.size());
+        assertEquals(dept, empRepository.findById(emp.getId()).get().getDept());
     }
 
     @Test
-    void test02(){
+    void test02() {
         //given
         Dept dept = Dept.builder()
                 .name("테스트 부서")
@@ -74,12 +161,12 @@ class EmpRepositoryTest {
         empRepository.save(emp);
 
         //then
-        List<Emp> empList = empRepository.findAll();
-        assertEquals(1, empList.size());
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
     }
 
     @Test
-    void test01(){
+    void test01() {
         //given
         Emp emp = Emp.builder()
                 .firstName("길동")
@@ -91,7 +178,7 @@ class EmpRepositoryTest {
         empRepository.save(emp);
 
         //then
-        List<Emp> empList = empRepository.findAll();
-        assertEquals(1, empList.size());
+        assertEquals(1, empRepository.findAll().size());
+        assertEquals(0, deptRepository.findAll().size());
     }
 }

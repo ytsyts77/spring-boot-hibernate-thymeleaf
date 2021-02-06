@@ -31,7 +31,7 @@ public class Emp {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "dept_id")
+    @JoinColumn(name = "dept_id", nullable = false)
     private Dept dept;
 
     @CreatedDate
@@ -50,16 +50,23 @@ public class Emp {
         this.lastName = lastName;
         this.email = email;
         this.dept = dept;
+        this.dept.getEmpList().add(this);
         this.createdAt = LocalDateTime.now();
     }
 
-    public void updateDept(Dept dept){
+    public void updateDept(Dept dept) {
         Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
 
-        if (dept == dept)
+        if (this.dept == dept)
             return;
 
+        if (this.dept != null) {
+            this.dept.getEmpList().remove(this);
+        }
+
         this.dept = dept;
+        this.dept.getEmpList().add(this);
+
         this.modifiedAt = LocalDateTime.now();
     }
 }

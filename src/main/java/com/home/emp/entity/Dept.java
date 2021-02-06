@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "dept")
 @Getter
-@ToString
+@ToString(exclude = "empList")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Dept {
     @Id
