@@ -34,7 +34,8 @@ public class Dept {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Dept(String name) {
+    public Dept(Long id, String name) {
+        this.id = id;
         this.name = name;
         this.createdAt = LocalDateTime.now();
     }
