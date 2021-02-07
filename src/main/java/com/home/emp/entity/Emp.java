@@ -1,6 +1,6 @@
 package com.home.emp.entity;
 
-import com.home.global.entity.Auditable;
+import com.home.global.entity.AuditableEntity;
 import com.home.global.message.UserMessage;
 import lombok.*;
 import org.springframework.util.Assert;
@@ -14,7 +14,7 @@ import static com.home.global.message.UserMessage.IS_REQUIRED;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Emp extends Auditable<String> {
+public class Emp extends AuditableEntity<String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

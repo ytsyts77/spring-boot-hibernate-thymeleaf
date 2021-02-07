@@ -1,6 +1,6 @@
 package com.home.emp.entity;
 
-import com.home.global.entity.Auditable;
+import com.home.global.entity.AuditableEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString(exclude = "empList")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Dept extends Auditable<String> {
+public class Dept extends AuditableEntity<String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
