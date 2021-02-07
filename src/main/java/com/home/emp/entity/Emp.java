@@ -46,7 +46,7 @@ public class Emp extends Auditable<String> {
         this.dept.getEmpList().add(this);
     }
 
-    public void setDept(Dept dept) {
+    public void updateDept(Dept dept) {
         Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보는"));
 
         if (this.dept == dept)
