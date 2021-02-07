@@ -26,11 +26,11 @@ public class Dept {
     private final List<Emp> empList = new ArrayList<>();
 
     @CreatedDate
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "modified_at", updatable = false)
+    @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
     @Builder
