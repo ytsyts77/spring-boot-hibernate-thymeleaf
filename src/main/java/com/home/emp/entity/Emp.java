@@ -33,11 +33,10 @@ public class Emp extends AuditableEntity<String> {
     private Dept dept;
 
     @Builder
-    public Emp(Long id, String firstName, String lastName, String email, Dept dept) {
+    public Emp(String firstName, String lastName, String email, Dept dept) {
         Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일 정보는"));
         Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보는"));
 
-        this.id = id;
         this.firstName = firstName;
         this.firstName = firstName;
         this.lastName = lastName;
