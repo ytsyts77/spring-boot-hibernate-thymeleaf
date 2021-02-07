@@ -1,6 +1,5 @@
 package com.home.emp.dto;
 
-import com.home.emp.entity.Emp;
 import lombok.*;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 public class DeptDto {
     private Long id;
     private String name;
-    private List<Emp> empList;
+    private List<EmpDto> empList;
 
     @Builder
     public DeptDto(String name) {
