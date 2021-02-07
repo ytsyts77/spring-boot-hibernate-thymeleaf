@@ -11,5 +11,5 @@ public interface DeptMapper {
     DeptDto toDeptDto(Dept dept);
     List<DeptDto> toDeptDto(List<Dept> deptList);
     Dept toDept(DeptDto deptDto);
-    List<Dept> toDeptList(List<DeptDto> deptDtoList);
+    List<Dept> toDept(List<DeptDto> deptDtoList);
 }
