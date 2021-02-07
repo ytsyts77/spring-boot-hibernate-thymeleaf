@@ -2,7 +2,6 @@ package com.home.emp.repository;
 
 import com.home.emp.entity.Dept;
 import com.home.emp.entity.Emp;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,12 +16,6 @@ class EmpRepositoryTest {
     EmpRepository empRepository;
     @Autowired
     DeptRepository deptRepository;
-
-    @BeforeEach
-    void deleteAll(){
-        empRepository.deleteAll();
-        deptRepository.deleteAll();
-    }
 
     @Test
     void test06() {
