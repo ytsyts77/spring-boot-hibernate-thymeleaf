@@ -36,6 +36,7 @@ class EmpServiceTest {
 
         //then
         assertEquals(1, empService.getAll().size());
+        assertEquals("길동", empService.getAll().get(0).getFirstName());
     }
 
     @Test
