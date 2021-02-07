@@ -2,6 +2,7 @@ package com.home.emp.repository;
 
 import com.home.emp.entity.Dept;
 import com.home.emp.entity.Emp;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,12 @@ class EmpCustomRepositoryTest {
     @Autowired
     DeptRepository deptRepository;
 
+    @BeforeEach
+    void clean(){
+        empRepository.deleteAll();
+        deptRepository.deleteAll();
+    }
+
     @Test
     void test01() {
         //given
@@ -31,7 +38,6 @@ class EmpCustomRepositoryTest {
                 .dept(dept)
                 .build();
 
-        deptRepository.save(dept);
         empRepository.save(emp);
         
         //when
@@ -39,6 +45,7 @@ class EmpCustomRepositoryTest {
 
         //then
         assertEquals(1, resultList.size());
+        assertEquals("길동", resultList.get(0).getFirstName());
     }
 
 }

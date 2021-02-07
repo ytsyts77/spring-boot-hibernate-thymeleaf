@@ -30,7 +30,7 @@ public class Emp {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "dept_id", nullable = false)
     private Dept dept;
 
@@ -43,10 +43,12 @@ public class Emp {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Emp(String firstName, String lastName, String email, Dept dept) {
+    public Emp(Long id, String firstName, String lastName, String email, Dept dept) {
         Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일"));
         Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
 
+        this.id = id;
+        this.firstName = firstName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

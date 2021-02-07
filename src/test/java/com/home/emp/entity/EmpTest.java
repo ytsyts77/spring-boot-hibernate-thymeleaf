@@ -1,6 +1,5 @@
 package com.home.emp.entity;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +15,15 @@ class EmpTest {
     @DisplayName("모든값 세팅하고 객체 생성")
     void test03() {
         //when
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
         Emp emp = Emp.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)
+                .dept(dept)
                 .build();
 
         //then

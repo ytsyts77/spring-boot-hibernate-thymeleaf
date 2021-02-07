@@ -23,7 +23,7 @@ public class Dept {
     private String name;
 
     @OneToMany(mappedBy = "dept")
-    private List<Emp> empList = new ArrayList<>();
+    private final List<Emp> empList = new ArrayList<>();
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
@@ -36,5 +36,6 @@ public class Dept {
     @Builder
     public Dept(String name) {
         this.name = name;
+        this.createdAt = LocalDateTime.now();
     }
 }

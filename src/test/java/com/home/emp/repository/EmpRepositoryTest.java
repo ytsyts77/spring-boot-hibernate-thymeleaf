@@ -2,32 +2,26 @@ package com.home.emp.repository;
 
 import com.home.emp.entity.Dept;
 import com.home.emp.entity.Emp;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import java.util.List;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DataJpaTest
+@SpringBootTest
+@Transactional
 class EmpRepositoryTest {
     @Autowired
     EmpRepository empRepository;
     @Autowired
     DeptRepository deptRepository;
 
-    @AfterEach
-    void printAll() {
-        List<Emp> empList = empRepository.findAll();
-        List<Dept> deptList = deptRepository.findAll();
-
-        System.out.println("------------ emp data ------------");
-        empList.forEach(System.out::println);
-        System.out.println("------------ dept data ------------");
-        deptList.forEach(System.out::println);
-        System.out.println("----------------------------------");
+    @BeforeEach
+    void deleteAll(){
+        empRepository.deleteAll();
+        deptRepository.deleteAll();
     }
 
     @Test
@@ -45,7 +39,6 @@ class EmpRepositoryTest {
                 .build();
 
         //when
-        deptRepository.save(dept);
         empRepository.save(emp);
 
 
@@ -53,7 +46,7 @@ class EmpRepositoryTest {
         assertEquals(1, empRepository.findAll().size());
         assertEquals(1, deptRepository.findAll().size());
 
-        assertEquals(dept, deptRepository.findById(dept.getId()).get());
+        assertEquals(dept.getId(), deptRepository.findById(dept.getId()).get().getId());
         assertEquals(1, dept.getEmpList().size());
     }
 
@@ -72,7 +65,6 @@ class EmpRepositoryTest {
                 .build();
 
         //when
-        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
@@ -99,18 +91,17 @@ class EmpRepositoryTest {
                 .dept(dept1)
                 .build();
 
-        deptRepository.save(dept1);
-        deptRepository.save(dept2);
         empRepository.save(emp);
 
         assertEquals(1, empRepository.findAll().size());
-        assertEquals(2, deptRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
 
         //when
+        deptRepository.save(dept2);
         emp.updateDept(dept2);
 
         //then
-        assertEquals(dept2, empRepository.findById(emp.getId()).get().getDept());
+        assertEquals(dept2.getName(), empRepository.findById(emp.getId()).get().getDept().getName());
     }
 
     @Test
@@ -127,7 +118,6 @@ class EmpRepositoryTest {
                 .dept(dept)
                 .build();
 
-        deptRepository.save(dept);
         empRepository.save(emp);
 
         assertEquals(1, empRepository.findAll().size());
@@ -137,7 +127,7 @@ class EmpRepositoryTest {
         emp.updateDept(dept);
 
         //then
-        assertEquals(dept, empRepository.findById(emp.getId()).get().getDept());
+        assertEquals(dept.getId(), empRepository.findById(emp.getId()).get().getDept().getId());
     }
 
     @Test
@@ -155,7 +145,6 @@ class EmpRepositoryTest {
                 .build();
 
         //when
-        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
@@ -178,7 +167,6 @@ class EmpRepositoryTest {
                 .build();
 
         //when
-        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
