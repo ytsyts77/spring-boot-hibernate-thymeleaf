@@ -1,7 +1,6 @@
 package com.home.emp.service;
 
-import com.home.emp.dto.EmpDto;
-import com.home.emp.mapper.EmpMapper;
+import com.home.emp.entity.Emp;
 import com.home.emp.repository.EmpRepository;
 import com.home.global.error.exception.BusinessException;
 import com.home.global.message.UserMessage;
@@ -19,21 +18,20 @@ import static com.home.global.message.UserMessage.IS_NOT_FOUND;
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class EmpService {
     private final EmpRepository empRepository;
-    private final EmpMapper empMapper;
 
     @Transactional
-    public void addNewEmp(EmpDto empDto) {
-        empRepository.save(empMapper.toEmp(empDto));
+    public void addNewEmp(Emp emp) {
+        empRepository.save(emp);
     }
 
     @Transactional(readOnly = true)
-    public EmpDto get(Long id) {
-        return empMapper.toEmpDto(empRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(UserMessage.get(IS_NOT_FOUND, "사원 정보를"))));
+    public Emp get(Long id) {
+        return empRepository.findById(id)
+                .orElseThrow(() -> new BusinessException(UserMessage.get(IS_NOT_FOUND, "사원 정보를")));
     }
 
     @Transactional(readOnly = true)
-    public List<EmpDto> getAll() {
-        return empMapper.toEmpDto(empRepository.findAll());
+    public List<Emp> getAll() {
+        return empRepository.findAll();
     }
 }

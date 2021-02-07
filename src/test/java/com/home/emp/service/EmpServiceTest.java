@@ -2,6 +2,7 @@ package com.home.emp.service;
 
 import com.home.emp.dto.DeptDto;
 import com.home.emp.dto.EmpDto;
+import com.home.emp.mapper.EmpMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EmpServiceTest {
     @Autowired
     EmpService empService;
+
+    @Autowired
+    EmpMapper empMapper;
 
     @Test
     @DisplayName("사원 등록")
@@ -32,7 +36,7 @@ class EmpServiceTest {
                 .build();
 
         //when
-        empService.addNewEmp(emp);
+        empService.addNewEmp(empMapper.toEmp(emp));
 
         //then
         assertEquals(1, empService.getAll().size());
