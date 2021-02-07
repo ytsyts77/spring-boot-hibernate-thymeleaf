@@ -33,7 +33,7 @@ class EmpRepositoryTest {
         dept.setName("테스트 수정 부서");
 
         //then
-        Optional<Dept> findDept = deptRepository.findById(1L);
+        Optional<Dept> findDept = deptRepository.findById(dept.getId());
         assertTrue(findDept.isPresent());
         assertEquals("테스트 수정 부서", findDept.get().getName());
         deptRepository.findAll();
