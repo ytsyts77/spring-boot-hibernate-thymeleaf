@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @Transactional
@@ -16,6 +19,39 @@ class EmpRepositoryTest {
     EmpRepository empRepository;
     @Autowired
     DeptRepository deptRepository;
+
+    @Test
+    void test09() {
+        //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
+        deptRepository.save(dept);
+
+        //when
+        dept.setName("테스트 수정 부서");
+
+        //then
+        Optional<Dept> findDept = deptRepository.findById(1L);
+        assertTrue(findDept.isPresent());
+        assertEquals("테스트 수정 부서", findDept.get().getName());
+        deptRepository.findAll();
+    }
+
+    @Test
+    void test08() {
+        //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
+        //when
+        deptRepository.save(dept);
+
+        //then
+        assertEquals(1, deptRepository.findAll().size());
+    }
 
     @Test
     void test07() {
