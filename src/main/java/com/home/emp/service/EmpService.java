@@ -20,7 +20,7 @@ public class EmpService {
     private final EmpRepository empRepository;
 
     @Transactional
-    public void addNewEmp(Emp emp) {
+    public void addEmp(Emp emp) {
         empRepository.save(emp);
     }
 

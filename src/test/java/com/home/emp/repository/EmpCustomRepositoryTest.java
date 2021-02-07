@@ -34,6 +34,7 @@ class EmpCustomRepositoryTest {
                 .dept(dept)
                 .build();
 
+        deptRepository.save(dept);
         empRepository.save(emp);
         
         //when

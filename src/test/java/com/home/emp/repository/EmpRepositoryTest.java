@@ -39,6 +39,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp1);
         empRepository.save(emp2);
 
