@@ -14,6 +14,7 @@ import static com.home.global.message.UserMessage.IS_REQUIRED;
 @Entity
 @Table(name = "emp")
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Emp {
@@ -57,7 +58,7 @@ public class Emp {
         this.createdAt = LocalDateTime.now();
     }
 
-    public void updateDept(Dept dept) {
+    public void setDept(Dept dept) {
         Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
 
         if (this.dept == dept)

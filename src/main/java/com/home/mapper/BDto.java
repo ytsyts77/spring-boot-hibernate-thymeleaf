@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class BDto {
+    private Long id;
     private String name;
 }

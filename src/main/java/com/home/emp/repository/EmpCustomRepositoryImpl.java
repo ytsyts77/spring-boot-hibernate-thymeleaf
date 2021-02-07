@@ -18,7 +18,6 @@ public class EmpCustomRepositoryImpl implements EmpCustomRepository {
         QDept d = QDept.dept;
 
         return query.selectFrom(e)
-                .innerJoin(e.dept, d)
                 .where(e.email.contains(email))
                 .fetch();
     }

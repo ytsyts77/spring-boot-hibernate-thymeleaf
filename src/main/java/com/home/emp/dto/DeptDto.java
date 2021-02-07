@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
+@Setter
 @Getter
 @ToString(exclude = "empList")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -14,9 +15,7 @@ public class DeptDto {
     private List<Emp> empList;
 
     @Builder
-    public DeptDto(Long id, String name, List<Emp> empList) {
-        this.id = id;
+    public DeptDto(String name) {
         this.name = name;
-        this.empList = empList;
     }
 }

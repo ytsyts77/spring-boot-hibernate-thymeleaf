@@ -3,6 +3,7 @@ package com.home.emp.dto;
 import lombok.*;
 
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EmpDto {
@@ -13,7 +14,7 @@ public class EmpDto {
     private DeptDto dept;
 
     @Builder
-    public EmpDto(Long id, String firstName, String lastName, String email, DeptDto dept) {
+    public EmpDto(String firstName, String lastName, String email, DeptDto dept) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

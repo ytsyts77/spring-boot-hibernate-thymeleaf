@@ -42,5 +42,6 @@ class EmpCustomRepositoryTest {
         //then
         assertEquals(1, resultList.size());
         assertEquals("길동", resultList.get(0).getFirstName());
+        assertEquals("테스트 부서", resultList.get(0).getDept().getName());
     }
 }

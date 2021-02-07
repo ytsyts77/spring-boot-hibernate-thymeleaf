@@ -91,7 +91,7 @@ class EmpRepositoryTest {
 
         //when
         deptRepository.save(dept2);
-        emp.updateDept(dept2);
+        emp.setDept(dept2);
 
         //then
         assertEquals(dept2.getName(), empRepository.findById(emp.getId()).get().getDept().getName());
@@ -117,7 +117,7 @@ class EmpRepositoryTest {
         assertEquals(1, deptRepository.findAll().size());
 
         //when
-        emp.updateDept(dept);
+        emp.setDept(dept);
 
         //then
         assertEquals(dept.getId(), empRepository.findById(emp.getId()).get().getDept().getId());

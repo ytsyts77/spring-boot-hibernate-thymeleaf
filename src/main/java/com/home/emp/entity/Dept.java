@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "dept")
 @Getter
+@Setter
 @ToString(exclude = "empList")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Dept {
@@ -34,8 +35,7 @@ public class Dept {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Dept(Long id, String name) {
-        this.id = id;
+    public Dept(String name) {
         this.name = name;
         this.createdAt = LocalDateTime.now();
     }
