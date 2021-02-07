@@ -2,7 +2,7 @@ package com.home.emp.service;
 
 import com.home.emp.entity.Emp;
 import com.home.emp.repository.EmpRepository;
-import com.home.global.error.exception.BusinessException;
+import com.home.global.common.exception.BusinessException;
 import com.home.global.common.message.UserMessage;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

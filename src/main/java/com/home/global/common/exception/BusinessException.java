@@ -1,4 +1,4 @@
-package com.home.global.error.exception;
+package com.home.global.common.exception;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {
