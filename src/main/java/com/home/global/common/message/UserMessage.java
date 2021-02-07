@@ -1,4 +1,4 @@
-package com.home.global.message;
+package com.home.global.common.message;
 
 public final class UserMessage {
     public static final String IS_REQUIRED = "%s 필수 입력값 입니다.";

@@ -1,13 +1,13 @@
 package com.home.emp.entity;
 
-import com.home.global.entity.AuditableEntity;
-import com.home.global.message.UserMessage;
+import com.home.global.common.entity.AuditableEntity;
+import com.home.global.common.message.UserMessage;
 import lombok.*;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
 
-import static com.home.global.message.UserMessage.IS_REQUIRED;
+import static com.home.global.common.message.UserMessage.IS_REQUIRED;
 
 @Entity
 @Table(name = "emp")

@@ -1,4 +1,4 @@
-package com.home.global.entity;
+package com.home.global.common.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

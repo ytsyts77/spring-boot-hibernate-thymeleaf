@@ -1,6 +1,6 @@
 package com.home.emp.entity;
 
-import com.home.global.entity.AuditableEntity;
+import com.home.global.common.entity.AuditableEntity;
 import lombok.*;
 
 import javax.persistence.*;

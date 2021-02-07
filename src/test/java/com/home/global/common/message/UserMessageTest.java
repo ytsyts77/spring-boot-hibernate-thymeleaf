@@ -1,9 +1,9 @@
-package com.home.global.message;
+package com.home.global.common.message;
 
 import org.junit.jupiter.api.Test;
 
-import static com.home.global.message.UserMessage.IS_NOT_FOUND;
-import static com.home.global.message.UserMessage.IS_REQUIRED;
+import static com.home.global.common.message.UserMessage.IS_NOT_FOUND;
+import static com.home.global.common.message.UserMessage.IS_REQUIRED;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserMessageTest {

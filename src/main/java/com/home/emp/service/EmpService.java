@@ -3,7 +3,7 @@ package com.home.emp.service;
 import com.home.emp.entity.Emp;
 import com.home.emp.repository.EmpRepository;
 import com.home.global.error.exception.BusinessException;
-import com.home.global.message.UserMessage;
+import com.home.global.common.message.UserMessage;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.home.global.message.UserMessage.IS_NOT_FOUND;
+import static com.home.global.common.message.UserMessage.IS_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
