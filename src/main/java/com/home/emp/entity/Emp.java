@@ -15,7 +15,6 @@ import static com.home.global.message.UserMessage.IS_REQUIRED;
 @Table(name = "emp")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Emp {
     @Id
@@ -31,7 +30,7 @@ public class Emp {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "dept_id", nullable = false)
     private Dept dept;
 
@@ -45,8 +44,8 @@ public class Emp {
 
     @Builder
     public Emp(Long id, String firstName, String lastName, String email, Dept dept) {
-        Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일"));
-        Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
+        Assert.hasText(email, UserMessage.get(IS_REQUIRED, "이메일 정보는"));
+        Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보는"));
 
         this.id = id;
         this.firstName = firstName;
@@ -59,7 +58,7 @@ public class Emp {
     }
 
     public void setDept(Dept dept) {
-        Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보"));
+        Assert.notNull(dept, UserMessage.get(IS_REQUIRED, "부서 정보는"));
 
         if (this.dept == dept)
             return;

@@ -43,7 +43,7 @@ class EmpTest {
         //expect
         Exception e = assertThrows(IllegalArgumentException.class, empBuilder::build);
 
-        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
+        assertEquals("이메일 정보는 필수 입력값 입니다.", e.getMessage());
     }
 
     @Test
@@ -58,7 +58,7 @@ class EmpTest {
         //expect
         Exception e = assertThrows(IllegalArgumentException.class, empBuilder::build);
 
-        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
+        assertEquals("이메일 정보는 필수 입력값 입니다.", e.getMessage());
     }
 
     @Test
@@ -73,6 +73,6 @@ class EmpTest {
         //expect
         Exception e = assertThrows(IllegalArgumentException.class, empBuilder::build);
 
-        assertEquals("이메일 (은/는) 필수 입력값 입니다.", e.getMessage());
+        assertEquals("이메일 정보는 필수 입력값 입니다.", e.getMessage());
     }
 }

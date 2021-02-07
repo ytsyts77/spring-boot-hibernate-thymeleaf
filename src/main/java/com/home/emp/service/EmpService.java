@@ -22,14 +22,14 @@ public class EmpService {
     private final EmpMapper empMapper;
 
     @Transactional
-    public void add(EmpDto empDto) {
+    public void addNewEmp(EmpDto empDto) {
         empRepository.save(empMapper.toEmp(empDto));
     }
 
     @Transactional(readOnly = true)
     public EmpDto get(Long id) {
         return empMapper.toEmpDto(empRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(UserMessage.get(IS_NOT_FOUND, "데이터"))));
+                .orElseThrow(() -> new BusinessException(UserMessage.get(IS_NOT_FOUND, "사원 정보를"))));
     }
 
     @Transactional(readOnly = true)

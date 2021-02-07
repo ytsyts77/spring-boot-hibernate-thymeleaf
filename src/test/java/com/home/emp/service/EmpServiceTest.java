@@ -32,7 +32,7 @@ class EmpServiceTest {
                 .build();
 
         //when
-        empService.add(emp);
+        empService.addNewEmp(emp);
 
         //then
         assertEquals(1, empService.getAll().size());

@@ -18,6 +18,40 @@ class EmpRepositoryTest {
     DeptRepository deptRepository;
 
     @Test
+    void test07() {
+        //given
+        Dept dept = Dept.builder()
+                .name("테스트 부서")
+                .build();
+
+        Emp emp1 = Emp.builder()
+                .firstName("길동")
+                .lastName("홍")
+                .email("test1@email.com")
+                .dept(dept)
+                .build();
+
+        Emp emp2 = Emp.builder()
+                .firstName("길동")
+                .lastName("홍")
+                .email("test2@email.com")
+                .dept(dept)
+                .build();
+
+        //when
+        empRepository.save(emp1);
+        empRepository.save(emp2);
+
+
+        //then
+        assertEquals(2, empRepository.findAll().size());
+        assertEquals(1, deptRepository.findAll().size());
+
+        assertEquals(dept.getId(), deptRepository.findById(dept.getId()).get().getId());
+        assertEquals(2, dept.getEmpList().size());
+    }
+
+    @Test
     void test06() {
         //given
         Dept dept = Dept.builder()
@@ -32,6 +66,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
 
@@ -58,6 +93,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
@@ -84,6 +120,7 @@ class EmpRepositoryTest {
                 .dept(dept1)
                 .build();
 
+        deptRepository.save(dept1);
         empRepository.save(emp);
 
         assertEquals(1, empRepository.findAll().size());
@@ -111,6 +148,7 @@ class EmpRepositoryTest {
                 .dept(dept)
                 .build();
 
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         assertEquals(1, empRepository.findAll().size());
@@ -138,6 +176,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then
@@ -160,6 +199,7 @@ class EmpRepositoryTest {
                 .build();
 
         //when
+        deptRepository.save(dept);
         empRepository.save(emp);
 
         //then

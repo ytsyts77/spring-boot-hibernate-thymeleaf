@@ -13,10 +13,10 @@ class UserMessageTest {
         //given
 
         //when
-        String message = UserMessage.get(IS_NOT_FOUND, "데이터");
+        String message = UserMessage.get(IS_NOT_FOUND, "데이터를");
 
         //then
-        assertEquals("데이터 (을/를) 찾을 수 없습니다.", message);
+        assertEquals("데이터를 찾을 수 없습니다.", message);
     }
 
     @Test
@@ -24,9 +24,9 @@ class UserMessageTest {
         //given
 
         //when
-        String message = UserMessage.get(IS_REQUIRED, "이메일");
+        String message = UserMessage.get(IS_REQUIRED, "이메일 정보는");
 
         //then
-        assertEquals("이메일 (은/는) 필수 입력값 입니다.", message);
+        assertEquals("이메일 정보는 필수 입력값 입니다.", message);
     }
 }
